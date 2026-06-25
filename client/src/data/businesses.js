@@ -1,14 +1,3 @@
-const path = require('path');
-const fs = require('fs');
-
-const DATA_DIR = path.join(__dirname, '..', 'data');
-const DB_PATH = path.join(DATA_DIR, 'businesses.json');
-
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
 const defaultHours = {
   monday: '9:00 AM - 9:00 PM',
   tuesday: '9:00 AM - 9:00 PM',
@@ -122,6 +111,7 @@ const businesses = [
     tags: ['tacos', 'mexican', 'margaritas', 'casual', 'quick bite'],
     is_open: true
   },
+
   {
     id: 5,
     name: 'Green Leaf Cafe',
@@ -168,7 +158,6 @@ const businesses = [
     tags: ['burgers', 'american', 'fries', 'milkshakes', 'casual'],
     is_open: true
   },
-
   {
     id: 7,
     name: 'Pho King Delicious',
@@ -238,6 +227,7 @@ const businesses = [
     tags: ['coffee', 'espresso', 'pastries', 'wifi', 'workspace'],
     is_open: true
   },
+
   {
     id: 10,
     name: 'Bluebonnet Books',
@@ -261,7 +251,6 @@ const businesses = [
     tags: ['books', 'independent', 'local authors', 'reading', 'gifts'],
     is_open: true
   },
-
   {
     id: 11,
     name: 'Iron & Thread',
@@ -331,6 +320,7 @@ const businesses = [
     tags: ['vinyl', 'records', 'music', 'turntables', 'vintage'],
     is_open: true
   },
+
   {
     id: 14,
     name: 'Pawsitive Vibes Pet Grooming',
@@ -354,7 +344,6 @@ const businesses = [
     tags: ['pets', 'grooming', 'dogs', 'cats', 'organic'],
     is_open: true
   },
-
   {
     id: 15,
     name: 'Spark Fitness Studio',
@@ -472,7 +461,4 @@ const businesses = [
   }
 ];
 
-// Write to JSON file
-const data = { businesses };
-fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-console.log(`Seeded ${businesses.length} businesses to ${DB_PATH}`);
+export default businesses;
