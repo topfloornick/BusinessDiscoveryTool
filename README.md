@@ -1,119 +1,64 @@
-# Business Discovery Tool
+# WebScout — Website Discovery Workflow
 
-A modern web application for discovering and researching local restaurants and small businesses. Search, filter, and explore businesses in your area.
+A modern lead discovery tool for web designers to find businesses that need new or updated websites. Covers the **entire United States** with no zip code or radius restrictions.
 
-## Features
+## 🚀 Run on StackBlitz
 
-- **Search** - Find businesses by name, description, or tags
-- **Filter** - Filter by category (Restaurant, Retail, Services), price level, and minimum rating
-- **Sort** - Sort by rating, review count, name, or price
-- **Detail Views** - View full business profiles with hours, contact info, and more
-- **Responsive** - Works great on desktop and mobile
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/topfloornick/BusinessDiscoveryTool/tree/main/client)
 
-## Tech Stack
+Or use the direct link:
+```
+https://stackblitz.com/github/topfloornick/BusinessDiscoveryTool/tree/main/client
+```
 
-- **Frontend:** React 18 + Vite
-- **Backend:** Node.js + Express
-- **Database:** SQLite (via better-sqlite3)
-- **Styling:** Custom CSS with CSS variables
+## ✨ Features
 
-## Getting Started
+- **🔍 Lead Discovery** — Find businesses with outdated or missing websites across all categories
+- **📁 Client Folders** — Organize leads by category with a folder-based view for easy management
+- **📊 Sales Pipeline** — Track leads from discovery to closing the deal
+- **✉️ Email Templates** — Pre-written cold outreach, follow-up, and referral emails
+- **📞 Call Scripts** — Step-by-step scripts for cold calls, follow-ups, and discovery calls
+- **📤 Export** — Download your leads as CSV or JSON
 
-### Prerequisites
+## 🏷️ Categories Covered
 
-- Node.js 18+
-- npm
+- Retail (fashion, electronics, home goods)
+- Tech (IT services, app development, SaaS)
+- Lifestyle (fitness, beauty, photography)
+- Credit & Finance (credit repair, lending, accounting)
+- Gaming (gaming cafes, collectibles, esports)
+- Healthcare (dental, medical practices, wellness)
+- Food & Beverage (restaurants, breweries, cafes)
+- Education (tutoring, online courses, schools)
+- Real Estate (agencies, property management)
+- Automotive (repair shops, dealerships)
 
-### Installation
+## 🇺🇸 Coverage
+
+**Nationwide US** — All 50 states, no zip code restrictions. Find leads in any city, any state.
+
+## 💡 No Business Domain Required!
+
+This tool is designed for freelancers starting out. You can use:
+- ✅ Personal email (Gmail, Outlook, etc.)
+- ✅ Personal phone number
+- ✅ No LLC needed
+- ✅ No business domain needed
+
+## 🛠️ Tech Stack
+
+- React 18 + Vite
+- Pure CSS (no external UI framework)
+- localStorage for data persistence
+- Zero backend required — runs entirely in the browser
+
+## Local Development
 
 ```bash
-# Install all dependencies (server + client)
-npm run install:all
-
-# Seed the database with sample data
-npm run seed
+cd client
+npm install
+npm run dev
 ```
-
-> **Note:** Make sure you run these commands from the root `BusinessDiscoveryTool/` directory (where the root `package.json` is).
-
-### Development
-
-Run the backend and frontend in separate terminals:
-
-```bash
-# Terminal 1 - Start the API server (port 3001)
-npm run dev:server
-
-# Terminal 2 - Start the React dev server (port 5173)
-npm run dev:client
-```
-
-Then open http://localhost:5173 in your browser.
-
-### Production Build
-
-```bash
-# Build the frontend
-npm run build
-
-# Start the server
-npm start
-```
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/businesses` | Search/list businesses with filters |
-| GET | `/api/businesses/:id` | Get a single business |
-| GET | `/api/businesses/categories` | List all categories |
-| GET | `/api/businesses/cities` | List all cities |
-| GET | `/api/health` | Health check |
-
-### Query Parameters for `/api/businesses`
-
-| Param | Description |
-|-------|-------------|
-| `q` | Search query (name, description, tags) |
-| `category` | Filter by category |
-| `city` | Filter by city |
-| `state` | Filter by state |
-| `minRating` | Minimum rating (e.g., 4.0) |
-| `priceLevel` | Price level (1-4) |
-| `sortBy` | Sort field (rating, review_count, name, price_level) |
-| `order` | Sort order (asc, desc) |
-| `page` | Page number |
-| `limit` | Results per page |
-
-## Project Structure
-
-```
-BusinessDiscoveryTool/
-├── client/                # React frontend
-│   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── App.jsx        # Main app component
-│   │   ├── App.css        # Styles
-│   │   └── main.jsx       # Entry point
-│   ├── index.html
-│   └── package.json
-├── server/                # Express backend
-│   ├── src/
-│   │   ├── routes/        # API routes
-│   │   ├── db.js          # Database connection
-│   │   ├── index.js       # Server entry point
-│   │   └── seed.js        # Database seeder
-│   └── package.json
-├── package.json           # Root scripts
-└── README.md
-```
-
-## Sample Data
-
-The seeder populates the database with 18 businesses across Austin, TX:
-- **8 Restaurants** - Italian, BBQ, Japanese, Mexican, Vietnamese, and more
-- **4 Retail Shops** - Bookstore, clothing boutique, plant shop, record store
-- **6 Service Businesses** - Pet grooming, fitness, auto repair, photography, wellness, coworking
 
 ## License
 
