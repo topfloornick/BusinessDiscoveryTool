@@ -27,12 +27,14 @@ A modern web application for discovering and researching local restaurants and s
 ### Installation
 
 ```bash
-# Install all dependencies
+# Install all dependencies (server + client)
 npm run install:all
 
 # Seed the database with sample data
 npm run seed
 ```
+
+> **Note:** Make sure you run these commands from the root `BusinessDiscoveryTool/` directory (where the root `package.json` is).
 
 ### Development
 
