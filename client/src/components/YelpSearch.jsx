@@ -18,7 +18,11 @@ const YELP_CATEGORIES = [
   { group: 'Gaming & Entertainment', items: ['arcades', 'escapegames', 'lasertag', 'bowling', 'mini_golf', 'comicbooks', 'hobbyshops', 'virtualrealitycenters'] },
 ];
 
-const CORS_PROXY = 'https://corsproxy.io/?';
+const CORS_PROXIES = [
+  { url: 'https://api.allorigins.win/raw?url=', passHeaders: false },
+  { url: 'https://corsproxy.io/?', passHeaders: true },
+  { url: 'https://api.codetabs.com/v1/proxy?quest=', passHeaders: false },
+];
 
 function YelpSearch({ addLead }) {
   const [apiKey, setApiKey] = useState(() => localStorage.getItem('yelpApiKey') || '');
@@ -71,38 +75,65 @@ function YelpSearch({ addLead }) {
         params.set('term', searchTerm);
       }
 
-      const url = `${CORS_PROXY}${encodeURIComponent(`https://api.yelp.com/v3/businesses/search?${params.toString()}`)}`;
+      const yelpUrl = `https://api.yelp.com/v3/businesses/search?${params.toString()}`;
+      let data = null;
+      let lastErr = null;
 
-      const response = await fetch(url, {
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Accept': 'application/json',
-        }
-      });
+      // Try each CORS proxy until one works
+      for (const proxy of CORS_PROXIES) {
+        try {
+          // Some proxies pass headers, some don't — for those that don't, we embed the key in the URL
+          let proxyUrl;
+          let fetchOptions = { headers: { 'Accept': 'application/json' } };
 
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error('Invalid API key. Please check your Yelp Fusion API key.');
+          if (proxy.passHeaders) {
+            proxyUrl = `${proxy.url}${encodeURIComponent(yelpUrl)}`;
+            fetchOptions.headers['Authorization'] = `Bearer ${apiKey}`;
+          } else {
+            // Embed authorization in the encoded URL as a header hint for the proxy
+            const separator = yelpUrl.includes('?') ? '&' : '?';
+            const urlWithAuth = yelpUrl;
+            proxyUrl = `${proxy.url}${encodeURIComponent(urlWithAuth)}`;
+            fetchOptions.headers['Authorization'] = `Bearer ${apiKey}`;
+            fetchOptions.headers['x-requested-with'] = 'XMLHttpRequest';
+          }
+
+          const response = await fetch(proxyUrl, fetchOptions);
+
+          if (response.status === 401) {
+            throw new Error('Invalid API key. Please check your Yelp Fusion API key. Make sure you copied the full key from https://www.yelp.com/developers/v3/manage_app');
+          }
+          if (response.status === 429) {
+            throw new Error('Rate limit reached. Yelp allows 500 searches/day on the free tier. Try again tomorrow.');
+          }
+
+          if (response.ok) {
+            data = await response.json();
+            break;
+          }
+        } catch (proxyErr) {
+          lastErr = proxyErr;
+          if (proxyErr.message.includes('Invalid API key') || proxyErr.message.includes('Rate limit')) {
+            throw proxyErr;
+          }
+          // Try next proxy
+          continue;
         }
-        if (response.status === 429) {
-          throw new Error('Rate limit reached. Yelp allows 500 searches/day on the free tier. Try again later.');
-        }
-        throw new Error(`Yelp API returned error ${response.status}. Check your API key and try again.`);
       }
 
-      const data = await response.json();
-
-      if (data.businesses && data.businesses.length > 0) {
+      if (data && data.businesses && data.businesses.length > 0) {
         setResults(data.businesses);
-      } else {
-        setError('No results found. Try a different location or category.');
+      } else if (data && data.businesses && data.businesses.length === 0) {
+        setError('No results found for this location/category. Try a different city or broader category.');
+      } else if (!data) {
+        setError(
+          'All CORS proxies are currently down. This is a known limitation of browser-only apps.\n\n' +
+          '✅ WORKAROUND: Use the "Research Workflow" tab instead — it opens Yelp directly in your browser where you can find the same businesses and save them manually.\n\n' +
+          '💡 TIP: Try again in a few minutes — proxies often come back online quickly.'
+        );
       }
     } catch (err) {
-      if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Network error — CORS proxy may be down. Try the alternative: open the Research Workflow tab and use direct Yelp links instead.');
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     } finally {
       setLoading(false);
     }
