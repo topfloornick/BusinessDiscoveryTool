@@ -98,13 +98,13 @@ function Dashboard({ leads, setActiveView }) {
         <div className="dash-card">
           <h3>⚡ Quick Actions</h3>
           <div className="quick-actions">
-            <button className="quick-action-btn" onClick={() => setActiveView('discover')}>
-              <span>🔍</span>
-              Discover Leads
+            <button className="quick-action-btn" onClick={() => setActiveView('research')}>
+              <span>🔬</span>
+              Research Workflow
             </button>
-            <button className="quick-action-btn" onClick={() => setActiveView('leads')}>
+            <button className="quick-action-btn" onClick={() => setActiveView('discover')}>
               <span>📁</span>
-              Client Folders
+              Saved Leads
             </button>
             <button className="quick-action-btn" onClick={() => setActiveView('outreach')}>
               <span>✉️</span>

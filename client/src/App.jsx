@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import LeadDiscovery from './components/LeadDiscovery';
+import ResearchWorkflow from './components/ResearchWorkflow';
 import LeadManager from './components/LeadManager';
 import OutreachHub from './components/OutreachHub';
 import Pipeline from './components/Pipeline';
@@ -47,6 +48,8 @@ function App() {
         return <Dashboard leads={leads} setActiveView={setActiveView} />;
       case 'discover':
         return <LeadDiscovery leads={leads} addLead={addLead} />;
+      case 'research':
+        return <ResearchWorkflow addLead={addLead} />;
       case 'leads':
         return <LeadManager leads={leads} updateLead={updateLead} deleteLead={deleteLead} />;
       case 'outreach':
@@ -94,6 +97,7 @@ function getViewTitle(view) {
   const titles = {
     dashboard: 'Dashboard',
     discover: 'Discover Leads',
+    research: 'Research Workflow',
     leads: 'Lead Manager',
     outreach: 'Outreach Hub',
     pipeline: 'Sales Pipeline',
