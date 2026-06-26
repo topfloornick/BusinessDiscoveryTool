@@ -3,11 +3,13 @@
   "version": "2.0.0",
   "description": "Website Discovery Workflow — Find businesses across the US that need new or updated websites",
   "scripts": {
-    "install:all": "npm install --prefix client",
-    "dev": "npm run dev --prefix client",
-    "build": "npm run build --prefix client",
-    "preview": "npm run preview --prefix client"
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "npm run dev:server & npm run dev:client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "start:server": "npm start --prefix server",
+    "build": "npm run build --prefix client"
   },
-  "keywords": ["web-design", "lead-generation", "discovery", "freelance", "business", "outreach"],
+  "keywords": ["web-design", "lead-generation", "discovery", "freelance", "business", "outreach", "yelp"],
   "license": "MIT"
 }

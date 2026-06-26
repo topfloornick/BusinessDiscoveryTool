@@ -19,9 +19,9 @@ const YELP_CATEGORIES = [
 ];
 
 const CORS_PROXIES = [
-  { url: 'https://api.allorigins.win/raw?url=', passHeaders: false },
-  { url: 'https://corsproxy.io/?', passHeaders: true },
-  { url: 'https://api.codetabs.com/v1/proxy?quest=', passHeaders: false },
+  { url: '/api/yelp/search?', type: 'local' },
+  { url: 'https://api.allorigins.win/raw?url=', type: 'external' },
+  { url: 'https://corsproxy.io/?', type: 'external' },
 ];
 
 function YelpSearch({ addLead }) {
@@ -79,23 +79,23 @@ function YelpSearch({ addLead }) {
       let data = null;
       let lastErr = null;
 
-      // Try each CORS proxy until one works
+      // Try each proxy until one works (local server first, then external CORS proxies)
       for (const proxy of CORS_PROXIES) {
         try {
-          // Some proxies pass headers, some don't — for those that don't, we embed the key in the URL
           let proxyUrl;
-          let fetchOptions = { headers: { 'Accept': 'application/json' } };
+          let fetchOptions = {
+            headers: {
+              'Authorization': `Bearer ${apiKey}`,
+              'Accept': 'application/json',
+            }
+          };
 
-          if (proxy.passHeaders) {
-            proxyUrl = `${proxy.url}${encodeURIComponent(yelpUrl)}`;
-            fetchOptions.headers['Authorization'] = `Bearer ${apiKey}`;
+          if (proxy.type === 'local') {
+            // Local proxy server — just pass query params directly
+            proxyUrl = `${proxy.url}${params.toString()}`;
           } else {
-            // Embed authorization in the encoded URL as a header hint for the proxy
-            const separator = yelpUrl.includes('?') ? '&' : '?';
-            const urlWithAuth = yelpUrl;
-            proxyUrl = `${proxy.url}${encodeURIComponent(urlWithAuth)}`;
-            fetchOptions.headers['Authorization'] = `Bearer ${apiKey}`;
-            fetchOptions.headers['x-requested-with'] = 'XMLHttpRequest';
+            // External CORS proxy — encode the full Yelp URL
+            proxyUrl = `${proxy.url}${encodeURIComponent(yelpUrl)}`;
           }
 
           const response = await fetch(proxyUrl, fetchOptions);
