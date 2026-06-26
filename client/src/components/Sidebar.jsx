@@ -1,6 +1,7 @@
 function Sidebar({ activeView, setActiveView, isOpen, onClose }) {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <DashboardIcon /> },
+    { id: 'yelp', label: 'Yelp Live Search', icon: <YelpIcon /> },
     { id: 'research', label: 'Research Workflow', icon: <ResearchIcon /> },
     { id: 'discover', label: 'Saved Leads', icon: <SearchIcon /> },
     { id: 'leads', label: 'Lead Manager', icon: <UsersIcon /> },
@@ -106,6 +107,14 @@ function ResearchIcon() {
       <rect x="9" y="3" width="6" height="4" rx="1" />
       <path d="M9 12h6" />
       <path d="M9 16h6" />
+    </svg>
+  );
+}
+
+function YelpIcon() {
+  return (
+    <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );
 }

@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import LeadDiscovery from './components/LeadDiscovery';
 import ResearchWorkflow from './components/ResearchWorkflow';
+import YelpSearch from './components/YelpSearch';
 import LeadManager from './components/LeadManager';
 import OutreachHub from './components/OutreachHub';
 import Pipeline from './components/Pipeline';
@@ -50,6 +51,8 @@ function App() {
         return <LeadDiscovery leads={leads} addLead={addLead} />;
       case 'research':
         return <ResearchWorkflow addLead={addLead} />;
+      case 'yelp':
+        return <YelpSearch addLead={addLead} />;
       case 'leads':
         return <LeadManager leads={leads} updateLead={updateLead} deleteLead={deleteLead} />;
       case 'outreach':
@@ -96,8 +99,9 @@ function App() {
 function getViewTitle(view) {
   const titles = {
     dashboard: 'Dashboard',
-    discover: 'Discover Leads',
+    discover: 'Saved Leads',
     research: 'Research Workflow',
+    yelp: 'Yelp Live Search',
     leads: 'Lead Manager',
     outreach: 'Outreach Hub',
     pipeline: 'Sales Pipeline',

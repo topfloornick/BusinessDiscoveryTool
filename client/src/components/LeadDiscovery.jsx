@@ -3,16 +3,22 @@ import AddLeadModal from './AddLeadModal';
 
 const CATEGORIES = [
   'All',
+  'Automotive',
+  'Health & Beauty',
+  'Food & Beverage',
+  'Home Services',
+  'Local Services',
+  'Fitness & Gyms',
+  'Pets',
+  'Banks & Finance',
+  'Real Estate',
   'Retail',
   'Tech',
-  'Lifestyle',
   'Credit & Finance',
-  'Gaming',
-  'Healthcare',
-  'Food & Beverage',
+  'Legal',
   'Education',
-  'Real Estate',
-  'Automotive'
+  'Gaming',
+  'Lifestyle'
 ];
 
 const SIZES = ['all', 'small', 'medium', 'large'];
@@ -255,16 +261,22 @@ function LeadCard({ lead, onToast }) {
 function getCategoryEmoji(cat) {
   const emojis = {
     'All': '🌐',
+    'Automotive': '🚗',
+    'Health & Beauty': '💆',
+    'Food & Beverage': '🍽️',
+    'Home Services': '🏡',
+    'Local Services': '🧺',
+    'Fitness & Gyms': '💪',
+    'Pets': '🐾',
+    'Banks & Finance': '🏦',
+    'Real Estate': '🏠',
     'Retail': '🛍️',
     'Tech': '💻',
-    'Lifestyle': '✨',
     'Credit & Finance': '💳',
-    'Gaming': '🎮',
-    'Healthcare': '🏥',
-    'Food & Beverage': '🍽️',
+    'Legal': '⚖️',
     'Education': '📚',
-    'Real Estate': '🏠',
-    'Automotive': '🚗'
+    'Gaming': '🎮',
+    'Lifestyle': '✨'
   };
   return emojis[cat] || '📌';
 }

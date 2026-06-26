@@ -1,16 +1,22 @@
 import { useState } from 'react';
 
 const CATEGORIES = [
+  'Automotive',
+  'Health & Beauty',
+  'Food & Beverage',
+  'Home Services',
+  'Local Services',
+  'Fitness & Gyms',
+  'Pets',
+  'Banks & Finance',
+  'Real Estate',
   'Retail',
   'Tech',
-  'Lifestyle',
   'Credit & Finance',
-  'Gaming',
-  'Healthcare',
-  'Food & Beverage',
+  'Legal',
   'Education',
-  'Real Estate',
-  'Automotive'
+  'Gaming',
+  'Lifestyle'
 ];
 
 const US_STATES = [

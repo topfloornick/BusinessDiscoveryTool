@@ -15,11 +15,18 @@ function Settings() {
     };
   });
 
+  const [yelpKey, setYelpKey] = useState(() => localStorage.getItem('yelpApiKey') || '');
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('webscoutSettings', JSON.stringify(settings));
   }, [settings]);
+
+  useEffect(() => {
+    if (yelpKey) {
+      localStorage.setItem('yelpApiKey', yelpKey);
+    }
+  }, [yelpKey]);
 
   const handleChange = (field, value) => {
     setSettings(prev => ({ ...prev, [field]: value }));
@@ -29,6 +36,7 @@ function Settings() {
     if (confirm('This will clear ALL leads and settings. Are you sure?')) {
       localStorage.removeItem('discoveryLeads');
       localStorage.removeItem('webscoutSettings');
+      localStorage.removeItem('yelpApiKey');
       window.location.reload();
     }
   };
@@ -86,6 +94,29 @@ function Settings() {
             placeholder="Your state"
           />
         </div>
+      </div>
+
+      {/* Yelp API */}
+      <div className="settings-section" style={{ border: '1px solid rgba(211,35,35,0.2)', background: 'rgba(211,35,35,0.03)' }}>
+        <h3>⭐ Yelp API Key</h3>
+        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+          Get a free API key from <a href="https://www.yelp.com/developers/v3/manage_app" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-light)' }}>Yelp Fusion</a> (500 free searches/day).
+          This powers the Yelp Live Search feature.
+        </p>
+        <div className="setting-item">
+          <label>API Key</label>
+          <input
+            type="password"
+            value={yelpKey}
+            onChange={(e) => setYelpKey(e.target.value)}
+            placeholder="Paste your Yelp Fusion API key..."
+          />
+        </div>
+        {yelpKey && (
+          <p style={{ fontSize: '0.75rem', color: 'var(--secondary)', marginTop: '0.5rem' }}>
+            ✓ Key saved — Yelp Live Search is active!
+          </p>
+        )}
       </div>
 
       {/* Business Details */}
