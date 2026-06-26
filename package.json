@@ -1,15 +1,13 @@
 {
   "name": "webscout-discovery-workflow",
   "version": "2.0.0",
-  "description": "Website Discovery Workflow — Find businesses across the US that need new or updated websites",
+  "description": "Website Discovery Workflow — Find businesses across the US that need new or updated websites. No server needed.",
   "scripts": {
-    "install:all": "npm install --prefix server && npm install --prefix client",
-    "dev": "npm run dev:server & npm run dev:client",
-    "dev:server": "npm run dev --prefix server",
-    "dev:client": "npm run dev --prefix client",
-    "start:server": "npm start --prefix server",
-    "build": "npm run build --prefix client"
+    "install": "npm install --prefix client",
+    "dev": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "preview": "npm run preview --prefix client"
   },
-  "keywords": ["web-design", "lead-generation", "discovery", "freelance", "business", "outreach", "yelp"],
+  "keywords": ["web-design", "lead-generation", "discovery", "freelance", "business", "outreach"],
   "license": "MIT"
 }

@@ -1,103 +1,78 @@
 # WebScout — Website Discovery Workflow
 
-A modern lead discovery tool for web designers to find businesses that need new or updated websites. Search Yelp's live database, verify leads, and manage your cold outreach — all from one app.
+A modern lead discovery tool for web designers to find businesses that need new or updated websites. Opens real Yelp & Google Maps searches, verify the data yourself, then save 100% accurate leads.
 
-## 🚀 Quick Start (2 Steps)
+**No server. No API keys. No setup. Just open and go.**
 
-### Step 1: Install
-```bash
-npm run install:all
+## 🚀 Run on StackBlitz (Instant, No Install)
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/topfloornick/BusinessDiscoveryTool/tree/main/client)
+
+Or paste this URL:
+```
+https://stackblitz.com/github/topfloornick/BusinessDiscoveryTool/tree/main/client
 ```
 
-### Step 2: Run
-Open **two terminals:**
+## 💻 Run Locally (Optional)
 
-**Terminal 1 — Start the server (Yelp proxy):**
-```bash
-cd server
-npm run dev
-```
-
-**Terminal 2 — Start the frontend:**
 ```bash
 cd client
+npm install
 npm run dev
 ```
-
-Then open `http://localhost:5173` in your browser.
-
-> **That's it!** The server handles Yelp API calls so you never hit CORS issues.
+Open `http://localhost:5173`
 
 ---
 
-## 🔑 Yelp API Setup (Free, 2 Minutes)
+## ✨ How It Works
 
-1. Go to [https://www.yelp.com/developers/v3/manage_app](https://www.yelp.com/developers/v3/manage_app)
-2. Sign in or create a free Yelp account
-3. App name: `WebScout` / Description: `Lead research`
-4. Copy the **API Key**
-5. Paste it in WebScout → Settings or on the Yelp Live Search page
+1. **Pick a state & city** (all 50 US states)
+2. **Pick a category** (Automotive, Health & Beauty, Food, etc.)
+3. **Click the Yelp / Google Maps buttons** — opens real search results in a new tab
+4. **Find businesses with bad or no websites** — these are your leads
+5. **Copy their info** into the quick-save form (phone auto-formats, email validates)
+6. **Use the Outreach Hub** for email templates & call scripts to contact them
 
-**Free tier = 500 searches/day** — more than enough for lead generation.
+Every lead you save is **real, verified data** that you confirmed yourself. No fake demos, no API limits, no CORS issues.
 
 ---
-
-## ✨ Features
-
-- **⭐ Yelp Live Search** — Search Yelp's database directly for real businesses with real phone numbers
-- **🔬 Research Workflow** — Step-by-step guided research with Google Maps & Yelp links
-- **📁 Lead Manager** — Table view + folder view to organize clients by category
-- **📊 Sales Pipeline** — Track leads from discovery to closed deal
-- **✉️ Email Templates** — 6 professional cold outreach templates
-- **📞 Call Scripts** — 3 proven scripts for cold calls, follow-ups, and discovery calls
-- **📤 Export** — Download leads as CSV or JSON
 
 ## 🏷️ Categories (200+ Subcategories)
 
-| Category | Examples |
-|----------|----------|
-| 🚗 Automotive | Auto Repair, Body Shops, Oil Change, Tires, Towing, Car Wash, Detailing, Dealers, Junkyards |
-| 💆 Health & Beauty | Dentists, Doctors, Chiropractors, Optometrists, Dermatologists, Massage, Hair, Nails, Barbers, Spas, PT |
-| 🍽️ Food & Beverage | Restaurants, Bakeries, Coffee, Pizza, Food Trucks, Bars, Catering |
-| 🏡 Home Services | Contractors, Plumbers, Electricians, HVAC, Roofing, Painters, Landscaping, Movers |
-| 💪 Fitness & Gyms | Gyms, Yoga, Pilates, CrossFit, Boxing, Personal Trainers |
-| 🐾 Pets | Groomers, Pet Stores, Vets, Dog Walkers, Boarding |
-| 🏦 Banks & Finance | Credit Repair, Tax, Accounting, Insurance, Mortgage |
-| 🏠 Real Estate | Agents, Property Management, Inspectors, Storage |
-| 🛍️ Retail | Clothing, Electronics, Furniture, Jewelry, Hardware |
-| 💻 Tech | IT Services, Computer Repair, Web Design, Marketing |
-| ⚖️ Legal | All attorney types |
-| 📚 Education | Tutoring, Driving School, Music, Dance, Daycare |
-| 🎮 Gaming | Gaming Lounges, Arcades, VR, Escape Rooms |
-| ✨ Lifestyle | Tattoo, Photography, Events, Florists |
+| Category | Subcategories |
+|----------|--------------|
+| 🚗 **Automotive** | Auto Repair, Body Shops, Oil Change, Tires, Towing, Car Wash, Auto Detailing, Parking, Car Dealers, Junkyards |
+| 💆 **Health & Beauty** | Dentists, Doctors, Chiropractors, Optometrists, Dermatologists, Podiatrists, Massage, Hair Salons, Nail Salons, Barbers, Spas, Physical Therapy |
+| 🍽️ **Food & Beverage** | Restaurants, Takeout, Delivery, Brunch, Coffee, Pizza, Bakeries, Food Trucks, Sports Bars, Pubs |
+| 🏡 **Home Services** | Contractors, Handymen, Plumbers, Electricians, HVAC, Roofing, Painters, Landscaping, Movers |
+| 🧺 **Local Services** | Dry Cleaning, Laundromats, Tailors, Junk Removal, Storage |
+| 💪 **Fitness & Gyms** | Gyms, Yoga, Pilates, CrossFit, Boxing, Personal Trainers, Martial Arts |
+| 🐾 **Pets** | Pet Groomers, Pet Stores, Vets, Dog Walkers, Boarding, Training |
+| 🏦 **Banks & Finance** | Credit Repair, Tax Prep, Accounting, Insurance, Mortgage Brokers |
+| 🏠 **Real Estate** | Agents, Property Management, Home Inspectors, Movers, Storage |
+| 🛍️ **Retail** | Clothing, Electronics, Furniture, Jewelry, Hardware, Thrift |
+| 💻 **Tech** | IT Services, Computer Repair, Web Design, Marketing, Phone Repair |
+| ⚖️ **Legal** | Personal Injury, Family Law, Immigration, DUI, Bankruptcy, Estate Planning |
+| 📚 **Education** | Tutoring, Driving School, Music, Dance, Martial Arts, Daycare |
+| 🎮 **Gaming** | Gaming Lounges, Arcades, VR, Escape Rooms, Comic Shops, Bowling |
+| ✨ **Lifestyle** | Tattoo, Photography, Florists, Wedding Planners, Events |
+
+---
 
 ## 💡 No Business Domain Required
 
 - ✅ Use your personal email (Gmail, Outlook)
 - ✅ Use your personal phone number
 - ✅ No LLC, no business registration needed
-- ✅ Start getting clients TODAY
+- ✅ No API keys or server required
+- ✅ Works 100% in the browser on StackBlitz
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React 18 + Vite
-- **Backend:** Express.js (lightweight Yelp proxy only)
-- **Storage:** localStorage (no database needed)
-- **API:** Yelp Fusion (free tier)
-
-## 📂 Project Structure
-
-```
-BusinessDiscoveryTool/
-├── client/           # React frontend (Vite)
-│   └── src/
-│       ├── components/   # All UI components
-│       └── data/         # Email templates, call scripts
-├── server/           # Express proxy server
-│   └── src/
-│       └── index.js      # Yelp API proxy (that's it!)
-└── package.json      # Root scripts
-```
+- React 18 + Vite (frontend only)
+- Pure CSS dark theme
+- localStorage for data persistence
+- Zero backend, zero API keys, zero dependencies beyond React
 
 ## License
 
